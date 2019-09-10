@@ -1,0 +1,25 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.IUserDao">
+    <select id="queryAll" resultType="user">
+        SELECT * FROM C_USER
+    </select>
+
+    <select id="queryById" parameterType="Integer" resultType="user">
+        SELECT * FROM C_USER WHERE ID = #{id}
+    </select>
+
+    <insert id="add" parameterType="user">
+        INSERT INTO C_USER (NAME, PWD, SEX, AGE) VALUES (#{name},#{pwd},#{sex},#{age})
+    </insert>
+
+    <update id="update" parameterType="user">
+        UPDATE C_USER SET NAME = #{name},PWD = #{pwd},SEX = #{sex},AGE = #{age} WHERE ID = #{id}
+    </update>
+
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM C_USER WHERE ID = #{id}
+    </delete>
+</mapper>
